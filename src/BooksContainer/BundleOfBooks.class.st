@@ -36,6 +36,116 @@ BundleOfBooks class >> example_2 [
 ]
 
 { #category : 'loading' }
+BundleOfBooks class >> example_3 [
+
+	<script>
+	| bundleOfBooks book1 book2 book3 book4 book5 greatestBook authorBooks selectedAuthor |
+	"1. Створення п’яти різних книг і додавання їх у контейнер:"
+	bundleOfBooks := self new.
+	book1 := MyBook new
+		         author: 'Author One';
+		         title: 'First Book';
+		         publishingHouse: 'Publisher A';
+		         yearOfPublication: 1995.
+	book2 := MultivolumeEdition new
+		         author: 'Author Two';
+		         title: 'Multi Book 1';
+		         publishingHouse: 'Publisher B';
+		         yearOfPublication: 2001;
+		         numberOfVolumes: 3;
+		         numberOfPagesInVolume: #( 150 200 250 ).
+	book3 := MultivolumeEdition new
+		         author: 'Author Three';
+		         title: 'Multi Book 2';
+		         publishingHouse: 'Publisher C';
+		         yearOfPublication: 2010;
+		         numberOfVolumes: 2;
+		         numberOfPagesInVolume: #( 300 500 ).
+	book4 := Monograph new
+		         author: 'Author Four';
+		         title: 'Monograph 1';
+		         publishingHouse: 'Publisher D';
+		         yearOfPublication: 2005;
+		         numberOfPages: 350;
+		         numberOfIllustrations: 15.
+	book5 := Monograph new
+		         author: 'Author Five';
+		         title: 'Monograph 2';
+		         publishingHouse: 'Publisher E';
+		         yearOfPublication: 2020;
+		         numberOfPages: 500;
+		         numberOfIllustrations: 25.
+	bundleOfBooks addAll: {
+			book1.
+			book2.
+			book3.
+			book4.
+			book5 }.
+	"3. Друк усіх елементів контейнера:"
+	bundleOfBooks printOn: Transcript.
+	"4. Знайти найбільшу за обсягом книгу і перевірити, чи це багатотомник:"
+	greatestBook := bundleOfBooks greatestBook.
+	Transcript
+		show: 'The largest book is: ';
+		print: greatestBook;
+		cr.
+	(greatestBook isKindOf: MultivolumeEdition)
+		ifTrue: [
+			Transcript
+				show: 'It is a multivolume edition.';
+				cr ]
+		ifFalse: [
+			Transcript
+				show: 'It is not a multivolume edition.';
+				cr ].
+	"5. Продемонструвати використання арифметичних операторів:"
+	book2 > book3
+		ifTrue: [
+			Transcript
+				show: 'book2 has more pages than book3.';
+				cr ]
+		ifFalse: [
+			Transcript
+				show: 'book3 has more pages than book2.';
+				cr ].
+	"6. Створити нову колекцію книг певного автора:"
+	selectedAuthor := UIManager default request:
+		                  'Enter the author to filter books:'.
+	authorBooks := bundleOfBooks ofType: MyBook.
+	authorBooks := authorBooks select: [ :book |
+		               book author = selectedAuthor ].
+
+	Transcript
+		show: 'Books by ' , selectedAuthor , ': ';
+		cr.
+	authorBooks do: [ :book | book printOn: Transcript ].
+	"7. Записує інформацію про об'єкт у файл"
+	bundleOfBooks printToFile: 'books.txt'
+]
+
+{ #category : 'loading' }
+BundleOfBooks class >> example_4 [
+	"2. Діалог для введення інформації про нову книгу:"
+
+	<script>
+	| author title publishingHouse yearOfPublication book |
+	author := UIManager default request: 'Enter the author of the book:'.
+	title := UIManager default request: 'Enter the title of the book:'.
+	publishingHouse := UIManager default request:
+		                   'Enter the publishing house:'.
+	yearOfPublication := (UIManager default
+		                      request: 'Enter the year of publication:'
+		                      initialAnswer: '2024') asInteger.
+
+	book := MyBook new
+		        author: author;
+		        title: title;
+		        publishingHouse: publishingHouse;
+		        yearOfPublication: yearOfPublication.
+	self new add: book
+]
+
+{ #category : 'loading' }
 BundleOfBooks class >> loadFromCodeFile: pathString [
 
 	pathString asFileReference readStreamDo: [ :in |
