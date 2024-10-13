@@ -29,6 +29,13 @@ BundleOfBooks class >> example_1 [
 ]
 
 { #category : 'loading' }
+BundleOfBooks class >> example_2 [
+
+	<script>
+	^ self pickFileAndLoad: '*.ston'
+]
+
+{ #category : 'loading' }
 BundleOfBooks class >> loadFromCodeFile: pathString [
 
 	pathString asFileReference readStreamDo: [ :in |
@@ -122,7 +129,7 @@ BundleOfBooks >> printOn: aStream [
 	memory do: [ :aBook |
 		aStream nextPutAll: ' - '.
 		aBook printOn: aStream.
-		aStream nextPut: Character cr ]
+		aStream nextPut: Character cr]
 ]
 
 { #category : 'saving' }

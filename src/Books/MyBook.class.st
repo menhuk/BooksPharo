@@ -30,8 +30,8 @@ MyBook >> author: isByteString [
 { #category : 'printing' }
 MyBook >> printOn: aStream [
 
-	aStream nextPutAll: 'Author['.
-	author printOn: aStream.
+	aStream nextPutAll: 'Author[';
+	print: author.
 	aStream nextPutAll: ']title['.
 	title printOn: aStream.
 	aStream nextPutAll: ']Publishing house['.
@@ -72,9 +72,7 @@ MyBook >> yearOfPublication [
 ]
 
 { #category : 'accessing' }
-MyBook >> yearOfPublication: aNumber [
+MyBook >> yearOfPublication: anInteger [
 
-	yearOfPublication := aNumber > 0.1
-		                     ifTrue: aNumber
-		                     ifFalse: 0.1
+	yearOfPublication := anInteger max: 1800
 ]
