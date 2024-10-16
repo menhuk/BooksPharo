@@ -146,6 +146,22 @@ BundleOfBooks class >> example_4 [
 ]
 
 { #category : 'loading' }
+BundleOfBooks class >> example_5 [
+	<script>
+	|selectedAuthor authorBooks|
+	"6. Створити нову колекцію книг певного автора:"
+	selectedAuthor := UIManager default request:
+		                  'Enter the author to filter books:'.
+	authorBooks := authorBooks ofType: MyBook.
+	authorBooks := authorBooks select: [ :book |
+		               book author = selectedAuthor ].
+
+	Transcript
+		show: 'Books by ' , selectedAuthor , ': ';
+		cr.
+]
+
+{ #category : 'loading' }
 BundleOfBooks class >> loadFromCodeFile: pathString [
 
 	pathString asFileReference readStreamDo: [ :in |
