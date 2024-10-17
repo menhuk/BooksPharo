@@ -9,7 +9,8 @@ Class {
 		'author',
 		'title',
 		'publishingHouse',
-		'yearOfPublication'
+		'yearOfPublication',
+		'NumberOfPage'
 	],
 	#category : 'Books',
 	#package : 'Books'
@@ -39,12 +40,24 @@ MyBook >> author: isByteString [
 	author := isByteString 
 ]
 
-{ #category : 'accessing' }
+{ #category : 'comparing' }
 MyBook >> max: aMyBook [
 
 	^ self numberOfPages > aMyBook numberOfPages
 		  ifTrue: [ self ]
 		  ifFalse: [ aMyBook ]
+]
+
+{ #category : 'accessing' }
+MyBook >> numberOfPages [
+
+	^ NumberOfPage
+]
+
+{ #category : 'accessing' }
+MyBook >> numberOfPages: aNumber [
+
+	NumberOfPage := aNumber
 ]
 
 { #category : 'printing' }
