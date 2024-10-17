@@ -15,6 +15,18 @@ Class {
 	#package : 'Books'
 }
 
+{ #category : 'comparing' }
+MyBook >> < aMyBook [
+
+	^ self numberOfPages < aMyBook numberOfPages
+]
+
+{ #category : 'comparing' }
+MyBook >> > aMyBook [
+
+	^ self numberOfPages > aMyBook numberOfPages
+]
+
 { #category : 'accessing' }
 MyBook >> author [
 
@@ -25,6 +37,14 @@ MyBook >> author [
 MyBook >> author: isByteString [
 
 	author := isByteString 
+]
+
+{ #category : 'accessing' }
+MyBook >> max: aMyBook [
+
+	^ self numberOfPages > aMyBook numberOfPages
+		  ifTrue: [ self ]
+		  ifFalse: [ aMyBook ]
 ]
 
 { #category : 'printing' }
