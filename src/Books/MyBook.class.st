@@ -40,6 +40,17 @@ MyBook >> author: isByteString [
 	author := isByteString 
 ]
 
+{ #category : 'initialization' }
+MyBook >> initialize [ 
+	super initialize.
+	author := ''.
+   title := 'LNU book'.
+   publishingHouse := 'LNU'.
+   yearOfPublication := 1900.
+   NumberOfPage := 100.
+	
+]
+
 { #category : 'comparing' }
 MyBook >> max: aMyBook [
 
