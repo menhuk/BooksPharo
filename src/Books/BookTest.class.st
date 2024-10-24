@@ -31,3 +31,49 @@ BookTest >> testMaxMethod [ [
     self assert: result = book2.
 ]
 ]
+
+{ #category : 'accessing' }
+BookTest >> testPublishingHouseSetter [ [
+    | book expectedPublishingHouse |
+
+    book := MyBook new.
+
+    expectedPublishingHouse := 'Publisher XYZ'.
+    
+    book publishingHouse: expectedPublishingHouse.
+
+    self assert: book publishingHouse = expectedPublishingHouse.
+]
+]
+
+{ #category : 'tests' }
+BookTest >> testTitleSetter [ [
+    | book expectedTitle |
+
+    book := MyBook new.
+
+    expectedTitle := 'Some Book Title'.
+
+    book title: expectedTitle.
+
+    self assert: book title = expectedTitle.
+]
+]
+
+{ #category : 'tests' }
+BookTest >> testYearOfPublicationSetter [ [
+    | book |
+
+    book := MyBook new.
+
+    book yearOfPublication: 1990.
+    self assert: book yearOfPublication = 1990.
+
+    book yearOfPublication: 1800.
+    self assert: book yearOfPublication = 1800.
+
+
+    book yearOfPublication: 1700.
+    self assert: book yearOfPublication = 1800.
+]
+]
