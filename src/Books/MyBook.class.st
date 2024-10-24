@@ -59,6 +59,24 @@ MyBook >> max: aMyBook [
 		  ifFalse: [ aMyBook ]
 ]
 
+{ #category : 'instance creation' }
+MyBook >> new: author title: title publishingHouse: publishingHouse yearOfPublication: yearOfPublication [ [
+    | newInstance |
+    
+    "Створення нового екземпляра класу"
+    newInstance := self new.
+    
+    "Ініціалізація атрибутів"
+    newInstance author: author.
+    newInstance title: title.
+    newInstance publishingHouse: publishingHouse.
+    newInstance yearOfPublication: yearOfPublication.
+    
+    "Повертаємо ініціалізований об'єкт"
+    ^ newInstance
+]
+]
+
 { #category : 'accessing' }
 MyBook >> numberOfPages [
 
