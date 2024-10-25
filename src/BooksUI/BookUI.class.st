@@ -1,10 +1,11 @@
 Class {
-	#name : #BookUI,
-	#superclass : #Object,
-	#category : #BooksUI
+	#name : 'BookUI',
+	#superclass : 'Object',
+	#category : 'BooksUI',
+	#package : 'BooksUI'
 }
 
-{ #category : #'ui-requests' }
+{ #category : 'ui-requests' }
 BookUI class >> addNewBook [
     | author title publishingHouse yearOfPublication formValues newBook |
 
@@ -36,7 +37,7 @@ BookUI class >> addNewBook [
 
 ]
 
-{ #category : #'ui-requests' }
+{ #category : 'ui-requests' }
 BookUI class >> addNewMonograph [
     | author title publishingHouse yearOfPublication NumberOfPages NumberOfIllustrations formValues newMonograph |
     
@@ -56,7 +57,7 @@ BookUI class >> addNewMonograph [
 	^ newMonograph. 
 ]
 
-{ #category : #'ui-requests' }
+{ #category : 'ui-requests' }
 BookUI class >> addNewMultivolumeEdition [
     | author title publishingHouse yearOfPublication numberOfVolumes numberOfPagesInVolume formValues newEdition |
 
@@ -89,7 +90,7 @@ BookUI class >> addNewMultivolumeEdition [
 
 ]
 
-{ #category : #'ui-requests' }
+{ #category : 'ui-requests' }
 BookUI class >> addNewPublication [
     | type |
 

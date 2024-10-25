@@ -1,1 +1,1 @@
-Package { #name : #BooksUI }
+Package { #name : 'BooksUI' }

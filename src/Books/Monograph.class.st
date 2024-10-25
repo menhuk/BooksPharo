@@ -24,12 +24,46 @@ Monograph >> > aMonograph [
 	^ self numberOfPages > aMonograph numberOfPages
 ]
 
+{ #category : 'initialization' }
+Monograph >> initialize [ [
+    super initialize.
+    
+    "Set default values for instance variables"
+    author := 'Unknown Author'.
+    title := 'Untitled'.
+    publishingHouse := 'Unknown Publisher'.
+    yearOfPublication := 2000.
+    NumberOfPages := 0.
+    NumberOfIllustrations := 0.
+]
+]
+
 { #category : 'comparing' }
 Monograph >> max: aMonograph [
 
 	^ self numberOfPages > aMonograph numberOfPages
 		  ifTrue: [ self ]
 		  ifFalse: [ aMonograph ]
+]
+
+{ #category : 'initialization' }
+Monograph >> new: author title: title publishingHouse: publishingHouse yearOfPublication: year numberOfPages: pages numberOfIllustrations: illustrations [ [
+    | newInstance |
+    
+    "Create a new instance of Monograph"
+    newInstance := self new.
+
+    "Initialize the instance variables with given parameters"
+    newInstance author: author.
+    newInstance title: title.
+    newInstance publishingHouse: publishingHouse.
+    newInstance yearOfPublication: year.
+    newInstance numberOfPages: pages.
+    newInstance numberOfIllustrations: illustrations.
+    
+    "Return the initialized instance"
+    ^ newInstance
+]
 ]
 
 { #category : 'accessing' }
