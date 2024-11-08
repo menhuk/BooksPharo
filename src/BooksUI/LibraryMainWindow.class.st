@@ -88,7 +88,7 @@ LibraryMainWindow >> title [
 LibraryMainWindow >> window [
     "Create and return the main window for the library management system."
     "scope: instance-variables"
-    ^ (SpecWindow new)
+    ^ (SpWindow new)
         title: self title;
         content: [ :builder | self buildMainUI: builder ];
         yourself.

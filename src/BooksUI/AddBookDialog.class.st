@@ -73,7 +73,7 @@ AddBookDialog >> initialize [
 AddBookDialog >> window [
     "Create and return the dialog window for adding a new book."
     "scope: instance-variables"
-    ^ (SpecWindow new)
+    ^ (SpWindow  new)
         title: 'Add New Book';
         content: [ :builder | self buildDialogUI: builder ];
         yourself.
